@@ -1,0 +1,80 @@
+Super cars 1.0
+
+Level: EASY
+Random generator initialized with seed: 666
+Distance: 30
+Coins: 5
+Cycle: 0
+Total obstacles: 13
+Total coins: 14
+Elapsed Time: 0.00 s
+  ═════════════════════════════════════════════════════════════════
+                                                      ░            
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+      >                                                       ¢    
+   ─────── ─────── ─────── ─────── ─────── ─────── ─────── ─────── 
+                                      ¢       ¢                    
+  ═════════════════════════════════════════════════════════════════
+
+Command > 
+[DEBUG] Executing: i
+Available objects:
+[Car] the racing car
+[Coin] gives 1 coin to the player
+[Obstacle] hits car
+Command > 
+[DEBUG] Executing: h
+Available commands:
+[h]elp: show this help
+[i]nfo: prints gameobject info
+[n]one | []: update
+[q]: go up
+[a]: go down
+[e]xit: exit game
+[r]eset: reset game
+[t]est: enables test mode
+Command > 
+[DEBUG] Executing: H
+Available commands:
+[h]elp: show this help
+[i]nfo: prints gameobject info
+[n]one | []: update
+[q]: go up
+[a]: go down
+[e]xit: exit game
+[r]eset: reset game
+[t]est: enables test mode
+Command > 
+[DEBUG] Executing: I
+Available objects:
+[Car] the racing car
+[Coin] gives 1 coin to the player
+[Obstacle] hits car
+Command > 
+[DEBUG] Executing: HeLP
+Available commands:
+[h]elp: show this help
+[i]nfo: prints gameobject info
+[n]one | []: update
+[q]: go up
+[a]: go down
+[e]xit: exit game
+[r]eset: reset game
+[t]est: enables test mode
+Command > 
+[DEBUG] Executing: InFo
+Available objects:
+[Car] the racing car
+[Coin] gives 1 coin to the player
+[Obstacle] hits car
+Command > 
+[DEBUG] Executing: z
+[ERROR]: Unknown command
+
+Command > 
+[DEBUG] Executing: X
+[ERROR]: Unknown command
+
+Command > 
+[DEBUG] Executing: e
+[GAME OVER] Player leaves the game

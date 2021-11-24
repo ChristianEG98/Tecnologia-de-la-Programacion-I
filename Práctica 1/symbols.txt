@@ -1,0 +1,9 @@
+Coin: ¢
+Player:
+  - Alive: >
+  - Crashed: @
+Obstacle: ░
+Lane separator: ─
+Road delimiter: ═
+Finish Line: ¦
+
