@@ -19,8 +19,7 @@ public class GoUpCommand extends Command{
 	@Override
 	public boolean execute(Game game) {
 		game.moveUp();
-		game.update();
-		game.increaseForwadsCells();
+		game.updatePlayer();
 		
 		return true;
 	}

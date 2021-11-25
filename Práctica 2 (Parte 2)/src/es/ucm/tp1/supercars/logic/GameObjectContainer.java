@@ -23,8 +23,15 @@ public class GameObjectContainer {
 		}
 	}
 	
+	public void resetLevel() {
+		for(int i = gameObjectList.size() - 1; i >= 0; i--) {
+			gameObjectList.get(i).onDelete();
+			gameObjectList.remove(i);
+		}
+	}
+	
 	public void removeDeadObjects() {
-		for(int i = 0; i < gameObjectList.size(); i++) {
+		for(int i = gameObjectList.size() - 1; i >= 0; i--) {
 			if(!gameObjectList.get(i).isAlive()) {
 				gameObjectList.get(i).onDelete();
 				gameObjectList.remove(i);

@@ -34,7 +34,7 @@ public class CheatCommand extends Command{
 	protected Command parse(String[] commandWords) {
 		try {
 			int id = Integer.parseInt(commandWords[0]);
-			if(id >= 1 && id <= 5) {
+			if(id >= GameObjectGenerator.MIN_ID && id <= GameObjectGenerator.MAX_ID) {
 				return new CheatCommand(id);
 			}
 		}

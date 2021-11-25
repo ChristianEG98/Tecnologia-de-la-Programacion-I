@@ -19,8 +19,7 @@ public class GoDownCommand extends Command{
 	@Override
 	public boolean execute(Game game) {
 		game.moveDown();
-		game.update();
-		game.increaseForwadsCells();
+		game.updatePlayer();
 		
 		return true;
 	}

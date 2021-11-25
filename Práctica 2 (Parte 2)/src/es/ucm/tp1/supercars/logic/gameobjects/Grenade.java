@@ -11,7 +11,7 @@ public class Grenade extends GameObject{
 	
 	public Grenade(Game game, int x, int y) {
 		super(game, x, y);
-		countdown = 3;
+		countdown = 4;
 		super.symbol = "ð[" + countdown + "]";
 	}
 

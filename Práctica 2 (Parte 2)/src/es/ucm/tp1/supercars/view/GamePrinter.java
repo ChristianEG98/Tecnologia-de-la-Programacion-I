@@ -1,6 +1,7 @@
 package es.ucm.tp1.supercars.view;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 import es.ucm.tp1.supercars.logic.Game;
 import es.ucm.tp1.supercars.logic.gameobjects.Coin;
@@ -85,7 +86,9 @@ public class GamePrinter {
 		}
 		
 		if(!game.getTestMode()) {
-			DecimalFormat df = new DecimalFormat("0,00");
+			DecimalFormatSymbols symbol = new DecimalFormatSymbols();
+			symbol.setDecimalSeparator(',');
+			DecimalFormat df = new DecimalFormat("0.00", symbol);
 			long ellapsedTime = (System.currentTimeMillis() - game.getFirstTime())/10;
 			str.append("\n" + "Elapsed Time: " + df.format(ellapsedTime) + " s");
 		}

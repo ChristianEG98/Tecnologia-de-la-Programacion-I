@@ -37,13 +37,20 @@ public class Game {
 	}
 	
 	public void update() {
-		player.doCollision();
-		player.goForward();
+		//player.doCollision();
+		//player.goForward();
+		increaseForwadsCells();
 		player.doCollision();
 		gameObjectList.update();
 		if(level.hasAdvancedObjects()) GameObjectGenerator.generateRuntimeObjects(this);
-		cycles++;
 		gameObjectList.removeDeadObjects();
+	}
+	
+	public void updatePlayer() {
+		//player.doCollision();
+		player.goForward();
+		cycles++;
+		update();
 	}
 	
 	protected void tryToAddObject(GameObject object, double frequency) {
@@ -149,8 +156,8 @@ public class Game {
 	}
 	
 	public void cleanLevel() {
-		gameObjectGenerator.reset();
-		gameObjectList = new GameObjectContainer();
+		gameObjectList.resetLevel();
+		//gameObjectList.removeDeadObjects();
 	}
 	
 	private Double getRandomNumber() {

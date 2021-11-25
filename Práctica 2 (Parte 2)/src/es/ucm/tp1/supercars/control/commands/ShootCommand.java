@@ -27,10 +27,11 @@ public class ShootCommand extends Command implements Buyable{
 		}
 		else {
 			System.out.print("Not enough coins\n");
-			System.out.print("[ERROR]: Failed to shoot\n");
+			System.out.print("[ERROR]: Failed to shoot\n\n");
 			return false;
 		}
 		game.update();
+		
 		return true;
 	}
 

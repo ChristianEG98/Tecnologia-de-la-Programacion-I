@@ -44,7 +44,7 @@ public class GrenadeCommand extends Command implements Buyable{
 			System.out.print("[ERROR]: Failed to add grenade\n");
 			return false;
 		}
-		game.increaseForwadsCells();
+		game.update();
 		return true;
 	}
 	

@@ -24,7 +24,7 @@ public class WaveCommand extends Command implements Buyable{
 	public boolean execute(Game game) {
 		if(buy(game)) {
 			wave.execute(game);
-			game.increaseForwadsCells();
+			game.update();
 		}
 		else {
 			System.out.print("Not enough coins\n");
