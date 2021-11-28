@@ -22,6 +22,7 @@ public class Pedestrian extends GameObject{
 	@Override
 	public boolean receiveCollision(Player player) {
 		player.resetCoins();
+		player.setCollision(true);
 		doCollision();
 		return false;
 	}

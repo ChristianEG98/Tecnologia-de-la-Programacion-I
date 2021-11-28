@@ -13,12 +13,12 @@ public class ShootAction implements InstantAction{
 		int maxColumns = 0;
 		
 		while(!shooted && maxColumns < 7) {
-			x++;
 			maxColumns++;
 			if(game.getObjectInPosition(x, game.getPlayerYPosition()) != null) {
 				Collider object = game.getObjectInPosition(x, game.getPlayerYPosition());
 				shooted = object.receiveShoot();
 			}
+			x++;
 		}
 	}
 

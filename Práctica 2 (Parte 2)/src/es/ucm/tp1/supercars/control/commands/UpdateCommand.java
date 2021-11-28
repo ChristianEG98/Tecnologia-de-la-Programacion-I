@@ -19,6 +19,8 @@ public class UpdateCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 		game.updatePlayer();
+		game.update();
+		
 		return true;
 	}
 

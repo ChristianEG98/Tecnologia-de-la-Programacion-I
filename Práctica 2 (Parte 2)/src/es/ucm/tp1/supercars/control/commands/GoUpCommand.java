@@ -18,9 +18,9 @@ public class GoUpCommand extends Command{
 
 	@Override
 	public boolean execute(Game game) {
-		game.moveUp();
 		game.updatePlayer();
-		
+		game.moveUp();
+		game.update();
 		return true;
 	}
 }
