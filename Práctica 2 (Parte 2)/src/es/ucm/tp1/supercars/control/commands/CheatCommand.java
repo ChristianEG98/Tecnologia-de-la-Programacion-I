@@ -26,7 +26,9 @@ public class CheatCommand extends Command{
 
 	@Override
 	public boolean execute(Game game) {
-		GameObjectGenerator.forceAdvanceObject(game, id, game.getPlayerXPosition() + game.getVisibility() - 1);
+		int lastColumn = game.getLastVisibleColumn();
+		game.clearColumn(lastColumn);
+		GameObjectGenerator.forceAdvanceObject(game, id, lastColumn);
 		return true;
 	}
 	

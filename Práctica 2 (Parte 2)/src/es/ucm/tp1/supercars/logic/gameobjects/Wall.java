@@ -2,10 +2,11 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 
 import es.ucm.tp1.supercars.logic.Game;
 
-public class Wall extends GameObject{
+public class Wall extends Obstacle{
 
 	private static int counter = 0;
 	public static final String INFO = "[WALL] hard obstacle";
+	private static final String[] SYMBOLS = new String[] {"░", "▒", "█"};
 	private int resistance = 3;
 	
 	public Wall(Game game, int x, int y) {
@@ -14,9 +15,7 @@ public class Wall extends GameObject{
 	}
 	
 	protected String getSymbol() {
-		if(resistance == 3) return "█";
-		else if(resistance == 2) return "▒";
-		else return "░";
+		return SYMBOLS[resistance - 1];
 	}
 
 	@Override
@@ -28,26 +27,15 @@ public class Wall extends GameObject{
 
 	@Override
 	public boolean receiveCollision(Player player) {
-		player.setCollision(true);
+		player.playerDead();
 		return false;
 	}
 
 	@Override
 	public void onEnter() {
-		counter++;		
+		counter++;
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void onDelete() {
-		counter--;
-		game.increaseCollectedCoins(5);
-	}
-	
 	public static void reset() {
 		counter = 0;
 	}
@@ -55,18 +43,13 @@ public class Wall extends GameObject{
 	public static int getCounter() {
 		return counter;		
 	}
-
+	
 	@Override
-	public boolean receiveShoot() {
-		doCollision();
-		return true;
+	public void onDelete() {
+		counter--;
+		game.increaseCollectedCoins(5);
 	}
-
-	@Override
-	public boolean receiveExplosion() {
-		return receiveShoot();
-	}
-
+	
 	@Override
 	public boolean receiveThunder() {
 		super.alive = false;

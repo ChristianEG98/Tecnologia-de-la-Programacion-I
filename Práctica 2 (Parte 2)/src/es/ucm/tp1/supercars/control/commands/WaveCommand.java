@@ -14,8 +14,6 @@ public class WaveCommand extends Command implements Buyable{
 
 	private static final String HELP = "do wave";
 	
-	private WaveAction wave = new WaveAction();
-	
 	public WaveCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
@@ -23,6 +21,7 @@ public class WaveCommand extends Command implements Buyable{
 	@Override
 	public boolean execute(Game game) {
 		if(buy(game)) {
+			WaveAction wave = new WaveAction();
 			wave.execute(game);
 			game.update();
 		}

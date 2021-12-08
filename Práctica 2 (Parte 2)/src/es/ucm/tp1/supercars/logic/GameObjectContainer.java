@@ -63,13 +63,15 @@ public class GameObjectContainer {
 		return null;
 	}
 	
-	public GameObject secondObjectInPosition(int x, int y) {
-		for(int i = gameObjectList.size() - 1; i >= 0; i--) {
-			if(gameObjectList.get(i).isInPosition(x, y) && gameObjectList.get(i).isAlive()) {
-				return gameObjectList.get(i);
+	public String printObjectsInPosition(int x, int y) {
+		StringBuilder str = new StringBuilder();
+		str.append("");
+		for(GameObject object : gameObjectList) {
+			if(object.isInPosition(x, y) && object.isAlive()) {
+				str.append(object.toString() + " ");
 			}
 		}
-		return null;
+		return str.toString();
 	}
 
 	public int objectsCounterInPosition(int x, int y) {
@@ -80,16 +82,6 @@ public class GameObjectContainer {
 			}
 		}
 		return counter;
-	}
-
-	public void waveObjects(Game game) {
-		for(int i = gameObjectList.size() - 1; i >= 0; i--) {
-			if(gameObjectList.get(i).getX() >= game.getPlayerXPosition() && gameObjectList.get(i).getX() < (game.getVisibility() + game.getPlayerXPosition() - 1)) {
-				if(game.getObjectInPosition(gameObjectList.get(i).getX() + 1, gameObjectList.get(i).getY()) == null) {
-					gameObjectList.get(i).increaseX(1);
-				}
-			}
-		}
 	}
 	
 }

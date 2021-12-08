@@ -50,7 +50,6 @@ public class GamePrinter {
 
 	protected Game game;
 	
-
 	public GamePrinter(Game game) {
 		this.game = game;
 	}
@@ -89,7 +88,7 @@ public class GamePrinter {
 			DecimalFormatSymbols symbol = new DecimalFormatSymbols();
 			symbol.setDecimalSeparator(',');
 			DecimalFormat df = new DecimalFormat("0.00", symbol);
-			long ellapsedTime = (System.currentTimeMillis() - game.getFirstTime())/10;
+			long ellapsedTime = (System.currentTimeMillis() - game.getFirstTime())/1000;
 			str.append("\n" + "Elapsed Time: " + df.format(ellapsedTime) + " s");
 		}
 

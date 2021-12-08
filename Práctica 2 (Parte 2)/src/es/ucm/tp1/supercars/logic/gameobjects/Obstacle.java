@@ -4,7 +4,7 @@ import es.ucm.tp1.supercars.logic.Game;
 
 public class Obstacle extends GameObject{
 	
-	private static int counter = 0;
+	protected static int counter = 0;
 	public static final String INFO = "[Obstacle] hits car";
 	
 	public Obstacle(Game game, int x, int y) {
@@ -20,7 +20,7 @@ public class Obstacle extends GameObject{
 
 	@Override
 	public boolean receiveCollision(Player player) {
-		player.setCollision(true);
+		player.playerDead();
 		return false;
 	}
 
@@ -61,5 +61,10 @@ public class Obstacle extends GameObject{
 	@Override
 	public boolean receiveThunder() {
 		return true;
+	}
+
+	@Override
+	public void receiveWave() {
+		x += 1;
 	}
 }

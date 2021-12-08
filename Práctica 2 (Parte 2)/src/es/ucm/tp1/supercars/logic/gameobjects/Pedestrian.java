@@ -2,11 +2,11 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 
 import es.ucm.tp1.supercars.logic.Game;
 
-public class Pedestrian extends GameObject{
+public class Pedestrian extends Obstacle{
 
 	private static int counter = 0;
 	public static final String INFO = "[PEDESTRIAN] person crossing the road up and down";
-	private boolean goDown = true;
+	private int plus;
 	
 	public Pedestrian(Game game, int x, int y) {
 		super(game, x, y);
@@ -14,15 +14,9 @@ public class Pedestrian extends GameObject{
 	}
 
 	@Override
-	public boolean doCollision() {
-		super.alive = false;
-		return false;
-	}
-
-	@Override
 	public boolean receiveCollision(Player player) {
 		player.resetCoins();
-		player.setCollision(true);
+		player.playerDead();
 		doCollision();
 		return false;
 	}
@@ -40,24 +34,10 @@ public class Pedestrian extends GameObject{
 	}
 
 	@Override
-	public void update() {
-		if(goDown) {
-			super.y++;
-			if(super.getY() >= game.getRoadWidth() - 1) goDown = false;
-		}
-		else {
-			super.y--;
-			if(super.getY() <= 0) {
-				goDown = true;
-			}
-		}
-	}
-
-	@Override
 	public void onDelete() {
 		counter--;
 	}
-	
+
 	public static void reset() {
 		counter = 0;
 	}
@@ -65,14 +45,12 @@ public class Pedestrian extends GameObject{
 	public static int getCounter() {
 		return counter;		
 	}
-
-	@Override
-	public boolean receiveExplosion() {
-		return receiveShoot();
-	}
 	
 	@Override
-	public boolean receiveThunder() {
-		return true;
+	public void update() {
+		if(super.getY() == 0) plus = 1;
+		if(super.getY() == game.getRoadWidth() - 1) plus = -1;
+		super.y += plus;
 	}
+
 }

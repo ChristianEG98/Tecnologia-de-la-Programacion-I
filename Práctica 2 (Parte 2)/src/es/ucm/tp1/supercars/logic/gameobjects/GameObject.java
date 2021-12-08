@@ -39,10 +39,6 @@ public abstract class GameObject implements Collider {
 	public int getX() {
 		return x;
 	}
-	
-	public void increaseX(int x) {
-		this.x += x;
-	}
 
 	public int getY() {
 		return y;

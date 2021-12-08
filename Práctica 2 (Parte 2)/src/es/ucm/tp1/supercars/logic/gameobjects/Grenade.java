@@ -69,4 +69,9 @@ public class Grenade extends GameObject{
 	public boolean receiveThunder() {
 		return false;
 	}
+
+	@Override
+	public void receiveWave() {
+		x += 1;
+	}
 }

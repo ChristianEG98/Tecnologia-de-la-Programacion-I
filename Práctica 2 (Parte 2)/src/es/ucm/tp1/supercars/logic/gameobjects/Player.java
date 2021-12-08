@@ -11,7 +11,7 @@ public class Player {
 	private int x;
 	private int y;
 	private int speed = 1;
-	private boolean collision = false;
+	private boolean alive = true;
 	private int collectedCoins = 5;
 	public static final String INFO = "[Car] the racing car";
 	
@@ -49,12 +49,17 @@ public class Player {
 		return speed;
 	}
 	
-	public void setCollision(boolean collision) {
-		this.collision = collision;
+	public boolean isInPosition(int x, int y) {
+		if(getX() - getX() == x && getY() == y) return true;
+		else return false;
 	}
 	
-	public boolean getCollision() {
-		return collision;
+	public void playerDead() {
+		alive = false;
+	}
+	
+	public boolean getIsAlive() {
+		return alive;
 	}
 	
 	public int getCollectedCoins() {
@@ -74,7 +79,7 @@ public class Player {
 	}
 	
 	public String toString() {
-		if(!collision) return SYM_ALIVE;
+		if(alive) return SYM_ALIVE;
 		else return SYM_DEAD;
 	}
 	

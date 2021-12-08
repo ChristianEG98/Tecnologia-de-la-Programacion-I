@@ -57,6 +57,9 @@ public class Controller {
 		if (refreshDisplay) {
 			printGame();
 		}
-		System.out.println(printer.endMessage() + game.getMessage());	
+		System.out.print(printer.endMessage());
+		if(game.exitStatus()) System.out.println(printer.exitMessage());	
+		else if(game.winStatus()) System.out.println(printer.winMessage());	
+		else System.out.println(printer.crashMessage());	
 	}
 }

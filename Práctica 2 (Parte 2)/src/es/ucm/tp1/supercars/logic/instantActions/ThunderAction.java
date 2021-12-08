@@ -7,7 +7,7 @@ import es.ucm.tp1.supercars.logic.InstantAction;
 public class ThunderAction implements InstantAction{
 
 	private int x, y;
-	private String thunder, aux;
+	private String thunder;
 	@Override
 	public void execute(Game game) {
 		thunder = "";
@@ -16,9 +16,8 @@ public class ThunderAction implements InstantAction{
 		if(x < game.getPlayerXPosition() + game.getVisibility()) {
 			Collider c = game.getObjectInPosition(x, y);
 			if(c != null) {
-				aux = c.toString();
 				if(c.receiveThunder()) {
-					thunder = " -> " + aux;
+					thunder = " -> " + c.toString();
 					c.doCollision();
 				}
 			}

@@ -46,7 +46,7 @@ public class Game {
 	
 	public void updatePlayer() {
 		player.doCollision();
-		if(!collisionStatus()) {
+		if(playerStatus()) {
 			player.goForward();
 			cycles++;
 		}
@@ -133,6 +133,10 @@ public class Game {
 		return player.getX();
 	}
 	
+	public int getRelativeX(int x) {
+		return player.getX() + x;
+	}
+	
 	public int getPlayerYPosition() {
 		return player.getY();
 	}
@@ -174,6 +178,15 @@ public class Game {
 		return level.getVisibility();
 	}
 	
+	public int getLastVisibleColumn() {
+		return getPlayerXPosition() + getVisibility() - 1;
+	}
+	
+	public boolean isValidVisiblePosition(int x, int y) {
+		if(x > getPlayerXPosition() - getForwardsCells() && x < getVisibility() && getObjectInPosition(x + getForwardsCells(), y) == null) return true;
+		else return false;
+	}
+	
 	public int getRoadWidth() {
 		return level.getWidth();
 	}
@@ -186,8 +199,8 @@ public class Game {
 		return exit;
 	}
 	
-	public boolean collisionStatus() {
-		return player.getCollision();
+	public boolean playerStatus() {
+		return player.getIsAlive();
 	}
 	
 	public boolean winStatus() {
@@ -203,16 +216,7 @@ public class Game {
 	}
 	
 	public boolean isFinished() {
-		if (exit) {
-			message = "Player leaves the game";
-			return true;
-		}
-		else if (winStatus()) {
-			message = "Player wins!\n";
-			return true;
-		}
-		else if (collisionStatus()) {
-			message = "Player crashed!\n";
+		if (exit || winStatus() || !playerStatus()) {
 			return true;
 		}
 		else {
@@ -223,23 +227,14 @@ public class Game {
 	public int numberOfObjectsInPosition(int x, int y) {
 		return gameObjectList.objectsCounterInPosition(x, y);
 	}
-	public String positionToString(int j, int i) {
-		if(player.getX() - player.getX() == j && player.getY() == i && gameObjectList.objectInPosition(j + player.getX(), i) != null) {
-			return player.toString() + " " + gameObjectList.objectInPosition(j + player.getX(), i).toString();
-		}
+	
+	public String positionToString(int x, int y) {
+		StringBuilder str = new StringBuilder();
+		if(player.isInPosition(x, y)) str.append(player.toString() + " ");
+		if(gameObjectList.objectInPosition(getRelativeX(x), y) != null) str.append(gameObjectList.printObjectsInPosition(getRelativeX(x), y));
+		if(getRelativeX(x) == getRoadLenght()) str.append("¦");
 		
-		else if(j + player.getX() == getRoadLenght() && player.getY() == i && player.getX() == getRoadLenght()) return player.toString() + " ¦";
-		else if(j + player.getX() == getRoadLenght()) return "¦";
-		
-		else if(player.getX() - player.getX() == j && player.getY() == i) return player.toString();
-		
-		else if(numberOfObjectsInPosition(j + player.getX(), i) > 1) {
-			return gameObjectList.objectInPosition(j + player.getX(), i).toString() + " " + gameObjectList.secondObjectInPosition(j + player.getX(), i).toString();
-		}
-		else if (gameObjectList.objectInPosition(j + player.getX(), i) != null) {
-			return gameObjectList.objectInPosition(j + player.getX(), i).toString();
-		}
-		else return "";
+		return str.toString();
 	}
 
 	public Collider getObjectInPosition(int x, int y) {
@@ -247,21 +242,19 @@ public class Game {
 		else return null;
 	}
 
-	public void forceAddObject(GameObject o) {
+	public void clearColumn(int column) {
 		for(int i = 0; i < getRoadWidth(); i++) {
-			if(gameObjectList.objectInPosition(o.getX(), i) != null) {
-				gameObjectList.remove(o.getX(), i);
+			if(gameObjectList.objectInPosition(column, i) != null) {
+				gameObjectList.remove(column, i);
 			}
 		}
+	}
+	public void forceAddObject(GameObject o) {
 		gameObjectList.add(o);
 	}
 	
 	public void execute(InstantAction action) {
 		action.execute(this);
-	}
-	
-	public void waveAction() {
-		gameObjectList.waveObjects(this);
 	}
 
 }
