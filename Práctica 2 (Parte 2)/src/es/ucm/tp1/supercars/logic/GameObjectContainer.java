@@ -73,15 +73,5 @@ public class GameObjectContainer {
 		}
 		return str.toString();
 	}
-
-	public int objectsCounterInPosition(int x, int y) {
-		int counter = 0;
-		for(GameObject object : gameObjectList) {
-			if(object.isInPosition(x, y) && object.isAlive()) {
-				counter++;
-			}
-		}
-		return counter;
-	}
 	
 }

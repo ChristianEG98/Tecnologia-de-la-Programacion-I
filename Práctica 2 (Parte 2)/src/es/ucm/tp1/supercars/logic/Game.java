@@ -223,10 +223,6 @@ public class Game {
 			return false;
 		}
 	}
-
-	public int numberOfObjectsInPosition(int x, int y) {
-		return gameObjectList.objectsCounterInPosition(x, y);
-	}
 	
 	public String positionToString(int x, int y) {
 		StringBuilder str = new StringBuilder();
