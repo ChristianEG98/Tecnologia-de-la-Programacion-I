@@ -67,8 +67,4 @@ public class Coin extends GameObject{
 		x += 1;
 	}
 
-	@Override
-	public String status() {
-		return "";
-	}
 }

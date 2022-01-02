@@ -76,7 +76,7 @@ public class Grenade extends GameObject{
 	}
 
 	@Override
-	public String status() {
-		return String.valueOf(countdown);
+	public String serialize() {
+		return super.serialize() + " " + counter;
 	}
 }

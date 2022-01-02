@@ -61,7 +61,7 @@ public class Pedestrian extends Obstacle{
 	}
 
 	@Override
-	public String status() {
-		return direction;
+	public String serialize() {
+		return super.serialize() + " " + direction;
 	}
 }

@@ -15,6 +15,5 @@ public interface Collider {
 	boolean receiveThunder();
 	
 	void receiveWave();
-	
-	String status();
+
 }

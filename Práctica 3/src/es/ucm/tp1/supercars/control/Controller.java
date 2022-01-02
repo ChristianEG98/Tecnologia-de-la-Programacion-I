@@ -61,8 +61,7 @@ public class Controller {
 		else if(game.winStatus()) {
 			System.out.println(printer.winMessage());
 			if(game.getEllapedTime() < game.getActualRecord()) {
-				System.out.println("¡Congratulations: You have beaten the record!");
-				game.updateRecord();;
+				game.updateRecord();
 			}
 		}
 		else System.out.println(printer.crashMessage());	

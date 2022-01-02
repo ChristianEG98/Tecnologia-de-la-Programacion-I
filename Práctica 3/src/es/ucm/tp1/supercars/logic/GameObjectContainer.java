@@ -59,23 +59,14 @@ public class GameObjectContainer {
 		return null;
 	}
 	
-	public GameObject secondObjectInPosition(int x, int y) {
-		for(int i = gameObjectList.size() - 1; i >= 0; i--) {
-			if(gameObjectList.get(i).isInPosition(x, y) && gameObjectList.get(i).isAlive()) {
-				return gameObjectList.get(i);
+	public String serialize(int x, int y) {
+		String s = "";
+		for(GameObject o : gameObjectList) {
+			if(o.isAlive() && o.isInPosition(x, y)) {
+				s += o.serialize() + "\n";
 			}
 		}
-		return null;
-	}
-	
-	public int numberOfObjectsInPosition(int x, int y) {
-		int c = 0;
-		for(int i = 0; i < gameObjectList.size(); i++) {
-			if(gameObjectList.get(i).isInPosition(x, y) && gameObjectList.get(i).isAlive()) {
-				c++;
-			}
-		}
-		return c;
+		return s.trim();
 	}
 	
 	public String printObjectsInPosition(int x, int y) {

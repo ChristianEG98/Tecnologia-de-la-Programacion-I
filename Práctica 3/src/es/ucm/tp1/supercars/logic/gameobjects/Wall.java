@@ -57,8 +57,8 @@ public class Wall extends Obstacle{
 	}
 	
 	@Override
-	public String status() {
-		return String.valueOf(resistance);
+	public String serialize() {
+		return super.serialize() + " " + String.valueOf(resistance);
 	}
 
 }

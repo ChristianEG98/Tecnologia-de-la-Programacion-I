@@ -16,8 +16,6 @@ public class ShootCommand extends Command implements Buyable{
 
 	private static final String HELP = "shoot bullet";
 	
-	private ShootAction shoot = new ShootAction();
-	
 	public ShootCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
@@ -29,6 +27,7 @@ public class ShootCommand extends Command implements Buyable{
 		} catch(NotEnoughCoinsException e) {
 			throw new CommandExecuteException(String.format("%s[ERROR]: Failed to shoot", e.getMessage()));
 		}
+		ShootAction shoot = new ShootAction();
 		shoot.execute(game);
 		game.update();
 		

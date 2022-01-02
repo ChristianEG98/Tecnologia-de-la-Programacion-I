@@ -252,15 +252,6 @@ public class Game {
 		if(gameObjectList.objectInPosition(x, y) != null) return gameObjectList.objectInPosition(x, y);
 		else return null;
 	}
-	
-	public Collider getSecondObjectInPosition(int x, int y) {
-		if(gameObjectList.objectInPosition(x, y) != null) return gameObjectList.secondObjectInPosition(x, y);
-		else return null;
-	}
-	
-	public int numberOfObjects(int x, int y) {
-		return gameObjectList.numberOfObjectsInPosition(x, y);
-	}
 
 	public void clearColumn(int column) {
 		for(int i = 0; i < getRoadWidth(); i++) {
@@ -271,6 +262,12 @@ public class Game {
 	}
 	public void forceAddObject(GameObject o) {
 		gameObjectList.add(o);
+	}
+	
+	public String getSerializeInfo(int x, int y) {
+		String s = gameObjectList.serialize(x, y);
+		if(s != "") s += System.lineSeparator();
+		return s;
 	}
 	
 	public void execute(InstantAction action) {

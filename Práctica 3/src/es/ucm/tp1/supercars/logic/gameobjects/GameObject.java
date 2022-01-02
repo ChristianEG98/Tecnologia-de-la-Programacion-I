@@ -47,6 +47,10 @@ public abstract class GameObject implements Collider {
 	public boolean isAlive() {
 		return alive;
 	}
+	
+	public String serialize() {
+		return symbol + " (" + x + ", " + y + ")";
+	}
 
 	public abstract void onEnter();
 

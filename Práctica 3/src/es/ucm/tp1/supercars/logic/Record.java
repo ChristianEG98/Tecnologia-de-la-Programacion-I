@@ -40,6 +40,7 @@ public class Record {
 			}
 			if(!levelFound) {
 				record = Long.MAX_VALUE;
+				System.out.println("Creating default record for level '" + level + "'");
 				str.append(level + ":" + Long.MAX_VALUE + "\n");
 			}
 			recordText = str.toString();
@@ -71,7 +72,6 @@ public class Record {
 	public void saveRecords() throws InputOutputRecordException {
 		try(BufferedWriter writer = new BufferedWriter(new FileWriter(filename))){
 			writer.write(recordText);
-			System.out.println("Records successfully saved to file " + filename);
 		}
 		catch(IOException e) {
 			throw new InputOutputRecordException(e.getMessage());

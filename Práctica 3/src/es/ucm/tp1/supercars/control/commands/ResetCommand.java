@@ -43,20 +43,26 @@ public class ResetCommand extends Command{
 	
 	@Override
 	protected Command parse(String[] commandWords) throws CommandParseException{
-		if (super.matchCommandName(commandWords[0]) && commandWords.length == 3) {
-			long seed;
-			boolean levelFound = false;
-			for(Level level: Level.values()) {
-				if(level.name().equalsIgnoreCase(commandWords[1])) levelFound = true;
+		if (super.matchCommandName(commandWords[0])) {
+			if(commandWords.length == 1) return new ResetCommand();
+				if(commandWords.length == 3) {
+					long seed;
+					boolean levelFound = false;
+					for(Level level: Level.values()) {
+						if(level.name().equalsIgnoreCase(commandWords[1])) levelFound = true;
+					}
+					if(!levelFound) throw new CommandParseException("[ERROR]: Command r: Level must be one of: TEST, EASY, HARD, ADVANCED");
+					try {
+						seed = Long.parseLong(commandWords[2]);
+					} catch(NumberFormatException e) {
+						throw new CommandParseException("[ERROR]: Command r: the seed is not a proper long number");
+					}
+					return new ResetCommand(Level.valueOfIgnoreCase(commandWords[1]), seed);
+				}
+				else throw new CommandParseException("[ERROR]: Command r: Incorrect number of arguments");
 			}
-			if(!levelFound) throw new CommandParseException("[ERROR]: Command r: Level must be one of: TEST, EASY, HARD, ADVANCED");
-			try {
-				seed = Long.parseLong(commandWords[2]);
-			} catch(NumberFormatException e) {
-				throw new CommandParseException("[ERROR]: Command r: the seed is not a proper long number");
-			}
-			return new ResetCommand(Level.valueOfIgnoreCase(commandWords[1]), seed);
-		}
+			
+		
 		return super.parse(commandWords);
 	}
 }

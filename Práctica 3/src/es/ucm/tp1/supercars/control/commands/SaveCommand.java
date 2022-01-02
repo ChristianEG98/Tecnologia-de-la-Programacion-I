@@ -16,7 +16,7 @@ public class SaveCommand extends Command {
 
 	private static final String SHORTCUT = "v";
 
-	private static final String HELP = " Save the state of the game to a file.";
+	private static final String HELP = "Save the state of the game to a file.";
 
 	private String filename;
 	

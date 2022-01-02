@@ -1,6 +1,5 @@
 package es.ucm.tp1.supercars.view;
 
-import es.ucm.tp1.supercars.logic.Collider;
 import es.ucm.tp1.supercars.logic.Game;
 
 public class GameSerializer {
@@ -22,24 +21,7 @@ public class GameSerializer {
 		for(int i = 0; i < game.getRoadLenght(); i++) {
 			for(int j = 0; j < game.getRoadWidth(); j++) {
 				if(i == game.getPlayerXPosition() && j == game.getPlayerYPosition()) str.append(game.getPlayerSymbol() + " (" + i + ", " + j + ")\n");
-				else{
-					if(game.numberOfObjects(i, j) > 0) {
-						Collider c = game.getObjectInPosition(i, j);
-						if(c != null) {
-							str.append(c.toString() + " (" + i + ", " + j + ")");
-							if(c.status() != "") str.append(" " + c.status() + "\n");
-							else str.append("\n");
-						}
-					}
-					if(game.numberOfObjects(i, j) > 1) {
-						Collider c = game.getSecondObjectInPosition(i, j);
-						if(c != null) {
-							str.append(c.toString() + " (" + i + ", " + j + ")");
-							if(c.status() != "") str.append(" " + c.status() + "\n");
-							else str.append("\n");
-						}
-					}
-				}
+				else str.append(game.getSerializeInfo(i, j));
 			}
 		}
 		return str.toString();
